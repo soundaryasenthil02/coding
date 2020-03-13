@@ -1,0 +1,20 @@
+def trap(self, A):
+        l=0
+        r=len(A)-1
+        left_max=0
+        right_max=0
+        ans=0
+        while(l<r):
+            if(A[l]<A[r]):
+                if(A[l]>=left_max):
+                    left_max=A[l]
+                else:
+                    ans+=left_max-A[l]
+                l+=1
+            else:
+                if(A[r]>=right_max):
+                    right_max=A[r]
+                else:
+                    ans+=right_max-A[r]
+                r-=1
+        return ans
