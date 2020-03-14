@@ -1,0 +1,26 @@
+int T;
+	cin >> T;
+	while (T--) {
+		string a, b;
+		cin >> a >> b;
+		int n = a.length();
+		int m = b.length();
+		
+		vector<vector<char> > dp(n + 1, vector<char>(m + 1));
+		dp[0][0] = 1;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j <= m; j++) {
+				if (!dp[i][j]) continue;
+
+				if (a[i] >= 'a' && a[i] <= 'z') dp[i + 1][j] = 1;
+				if (a[i] >= 'A' && a[i] <= 'Z' && j < m && a[i] == b[j]) {
+					dp[i + 1][j + 1] = 1;
+				}
+
+				if (a[i] >= 'a' && a[i] <= 'z' && j < m && a[i] - 'a' == b[j] - 'A') {
+					dp[i + 1][j + 1] = 1;
+				}
+			}
+		}
+		cout << (dp[n][m] ? "YES" : "NO") << endl;
+	}
