@@ -1,0 +1,10 @@
+from itertools import combinations as c
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return a list of list of integers
+    def combine(self, A, B):
+        l=list(range(1,A+1))
+        l1=list(c(l,B))
+        l2=list(map(list,l1))
+        return l2co
