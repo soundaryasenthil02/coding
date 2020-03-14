@@ -1,0 +1,18 @@
+//https://www.hackerrank.com/challenges/max-array-sum/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dynamic-programming
+Given an array of integers, find the subset of non-adjacent elements with the maximum sum. Calculate the sum of that subset.
+def maxSubsetSum(arr):
+
+    v = [0] * n
+
+    for i in range(n):
+        if i < 2:
+            v[i] = max(arr[i], 0)
+            continue
+        elif i == 2:
+            v[i] = v[i - 2] + max(arr[i], 0)
+            continue
+
+        v[i] = max(v[i-2], v[i-3]) + max(arr[i], 0)
+
+    return(max(v[-1], v[-2]))
+    
