@@ -1,0 +1,11 @@
+/*https://www.interviewbit.com/problems/max-product-subarray/*/
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def maxProduct(self, nums):
+        ans = nums[0]
+        ma, mi = 1, 1
+        for a in nums:
+            ma, mi = max(a, a*ma, a*mi), min(a, a*ma, a*mi)
+            ans = max(ans, ma, mi)
+        return ans
